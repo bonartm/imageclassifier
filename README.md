@@ -1,16 +1,15 @@
-# Create an i
+# Create an image dataset with your webcam
 
-Use Neural Networks to automatically distinguish between objects in pictures. 
-
-
-## Usage
+## Usage Example
 
 
 - start the program with:
 
     ```python
-    python imageclassifier/capture.py data/faces/
+    python src/capture.py data/faces/
     ```
 
-- take a picture with the webcam (press `space`) and save them in the folder `data/faces/`
+- the program launches your webcam
+- take pictures by pressing `space`
+- pictures are saved in the folder `data/faces/`
 - exit the program with `q`

@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     logging.getLogger().setLevel(logging.INFO)
    
-    # 640 x 360
+    # also try out this resolution: 640 x 360
     webcam = init_cam(640, 480)
     key = None
 
@@ -28,10 +28,14 @@ if __name__ == "__main__":
             # fliping the image 
             frame = cv2.flip(frame, 1)
    
-            # draw a [224x224] rectangle into the frame, leave some space for the black border         
+            # draw a [224x224] rectangle into the frame, leave some space for the black border 
+            offset = 2
+            width = 224
+            x = 160
+            y = 120
             cv2.rectangle(img=frame, 
-                          pt1=(160-2+0,120-2+0), 
-                          pt2=(160+2+224, 120+2+224), 
+                          pt1=(x-offset,y-offset), 
+                          pt2=(x+width+offset, y+width+offset), 
                           color=(0, 0, 0), 
                           thickness=2
             )     
@@ -42,8 +46,8 @@ if __name__ == "__main__":
             if key == 'space':
                 # write the image without overlay
                 # extract the [224x224] rectangle out of it
-                image = frame[120+0:120+224, 160+0:160+224, :]
-                #write_image(out_folder, image) 
+                image = frame[y:y+width, x:x+width, :]
+                write_image(out_folder, image) 
 
             # disable ugly toolbar
             cv2.namedWindow('frame', flags=cv2.WINDOW_GUI_NORMAL)              
